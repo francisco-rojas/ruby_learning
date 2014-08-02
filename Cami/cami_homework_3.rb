@@ -15,6 +15,7 @@ class MyGame
 		#@user_name.upcase
 		@user_name.upcase!
 		puts "#{@user_name}, you just entered #{room_name.upcase}"
+		binding.pry
 		puts "user name #{@user_name.object_id}"
 		puts "room name #{room_name.object_id}"
 		still_valid?
