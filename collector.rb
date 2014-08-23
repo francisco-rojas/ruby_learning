@@ -5,7 +5,7 @@ class Collector
 		@collection = collection
 	end
 
-	# map, inject, reject, reduce, sort, tap, include?
+	# inject, reduce, sort, tap, include?
 	def print_collection_elements
 		@collection.each { |i| puts i }
 	end
@@ -18,7 +18,30 @@ class Collector
     @collection.select { |n| n % 2 == 0 }
   end
 
+
+  def custom_select(&block)
+    a = []
+    @collection.each do |x|
+      if block.call(x)
+        a << x
+      end
+    end
+    a
+  end
+
   def duplicate_collection_items
   	@collection.map { |n| n * 2 }
+  end
+
+  def elements_to_string
+    @collection.map(&:to_s)
+  end
+
+  def accumulate
+    accumulator = 0
+    @collection.each do |n|
+      accumulator += n
+    end
+    accumulator
   end
 end
